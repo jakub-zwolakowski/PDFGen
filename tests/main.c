@@ -40,9 +40,11 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+#ifndef __TRUSTINSOFT_ANALYZER__ /* Long tests take too long. */
     /* These calls should fail, since we haven't added a page yet */
     if (pdf_add_ppm(pdf, NULL, 10, 10, 20, 30, "data/teapot.ppm") >= 0)
         return -1;
+#endif
 
     if (pdf_add_jpeg(pdf, NULL, 100, 500, 50, 150, "data/penguin.jpg") >= 0)
         return -1;
@@ -75,7 +77,9 @@ int main(int argc, char *argv[])
         16, 60, 800, PDF_RGB(0, 0, 0), 300, PDF_ALIGN_JUSTIFY, &height);
     pdf_add_rectangle(pdf, NULL, 58, 800 + 16, 304, -height, 2,
                       PDF_RGB(0, 0, 0));
+#ifndef __TRUSTINSOFT_ANALYZER__ /* Long tests take too long. */
     pdf_add_ppm(pdf, NULL, 10, 10, 20, 30, "data/teapot.ppm");
+#endif
 
     pdf_add_jpeg(pdf, NULL, 150, 10, 50, 150, "data/grey.jpg");
 
@@ -180,7 +184,11 @@ int main(int argc, char *argv[])
     pdf_append_page(pdf);
 
     pdf_set_font(pdf, "Times-Roman");
+#ifdef __TRUSTINSOFT_ANALYZER__
+    for (i = 0; i < 300; i++) {
+#else
     for (i = 0; i < 3000; i++) {
+#endif
         float xpos = (i / 100) * 40.0f;
         float ypos = (i % 100) * 10.0f;
         pdf_add_text(pdf, NULL, "Text blob", 8, xpos, ypos,

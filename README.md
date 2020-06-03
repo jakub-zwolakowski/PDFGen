@@ -62,6 +62,8 @@ Appveyor status: [![Build status](https://ci.appveyor.com/api/projects/status/3q
 
 Code Coverage: [![Coverage Status](https://coveralls.io/repos/github/AndreRenaud/PDFGen/badge.svg?branch=master)](https://coveralls.io/github/AndreRenaud/PDFGen?branch=master)
 
+TrustInSoft CI: [![TrustInSoft CI](https://ci.trust-in-soft.com/projects/jakub-zwolakowski/PDFgen.svg?branch=tis)](https://ci.trust-in-soft.com/projects/jakub-zwolakowski/PDFgen)
+
 Static Analysis
 ===============
 This is a code base that I use to test static analysis tools. As such the build system is quite a bit more complex than should be necessary for a project of this size.
